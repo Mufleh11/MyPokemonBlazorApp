@@ -18,3 +18,4 @@ namespace MyPokemonBlazorApp.NewFolder
 
     }
 }
+//this is my ocnetxt
