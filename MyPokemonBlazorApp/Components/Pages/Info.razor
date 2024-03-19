@@ -6,8 +6,20 @@
 <h3>Info</h3>
 @if (pokemon is not null)
 {
-    <p>@pokemon?.Name</p>
+   
+  <div class="card">
+        <div class="card-body bg-light">
+            <h1>@pokemon?.Name</h1>
+            <h3>@pokemon?.Type</h3>
+            <h3>@pokemon?.Generation</h3>
+            <p>HP: @pokemon?.HP</p>
+            <p>Attack: @pokemon?.Attack</p>
+            <p>Defence: @pokemon?.Defence</p>
+            <p>Speed: @pokemon?.Speed</p>
+</div>
+</div>
 }
+
 else
 {
     <p>No pokemon foudn for that Id</p>
@@ -26,3 +38,9 @@ else
         pokemon = DbContext.Pokemons.SingleOrDefault(p => p.Id == Id);
     }
 }
+
+
+
+<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar bg-success" style="width: 25%"></div>
+</div>
