@@ -1,35 +1,54 @@
 ﻿@page "/Info/{id:int}"
 @inject DatabaseContext DbContext
-
-
+@inject PokemonImageGrabber ImageGrabber
 
 
 <h3>Info</h3>
 @if (pokemon is not null)
 {
-    
 
-  <div class="card">
+   
+
+
+
+    <div class="card">
         <div class="card-body bg-light">
+
+            <div class="col-md-3 me-1">
+                <img src="@imageUrl" onerror="this.onerror=null;this.src='/img/notfound.png';" class="img-fluid img-thumbnail rounded-start" alt="@pokemon.Name" width="200px" align : "left" />
+            </div>
+
             <h1>@pokemon?.Name</h1>
-            <h3>@pokemon?.Type</h3>
-            <h3>@pokemon?.Generation</h3>
+
+            <h3>
+                @if (pokemon.Legendary)
+                {
+                    <span class="badge rounded-pill bg-warning">Legendary</span>
+                }
+
+                <span class="badge text-bg-primary">@pokemon?.Type</span>
+                <span class="badge text-bg-secondary">Generation @pokemon?.Generation</span>
+            </h3>
+
+
+
+
 
 
             <p>
                 HP:<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="@pokemon.HP" aria-valuemin="0" aria-valuemax="100" style=" height: 30px">
                     <div class="progress-bar bg-success" style="width: @(pokemon.HP*100/255)%">@pokemon?.HP</div>
-                    
+
                 </div>
             </p>
-            style = text align {right: dsfdsgfdsgds}
+
 
 
 
             <p>
                 Attack:<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="@pokemon.Attack" aria-valuemin="0" aria-valuemax="100" style=" height: 30px">
                     <div class="progress-bar bg-default" style="width: @(pokemon.Attack*100/255)%">@pokemon?.Attack</div>
-                    
+
                 </div>
             </p>
 
@@ -38,20 +57,36 @@
             <p>
                 Defence:<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="@pokemon.Defence" aria-valuemin="0" aria-valuemax="100" style=" height: 30px">
                     <div class="progress-bar bg-danger" style="width: @(pokemon.Defence*100/255)%">@pokemon?.Defence</div>
-                    
+
                 </div>
             </p>
 
 
             <p>
-                Speed:<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="@pokemon.Speed" aria-valuemin="0" aria-valuemax="100" style=" height: 30px"  >
+                Speed:<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="@pokemon.Speed" aria-valuemin="0" aria-valuemax="100" style=" height: 30px">
                     <div class="progress-bar bg-warning" style="width: @(pokemon.Speed*100/255)%">@pokemon?.Speed</div>
-                    
+
                 </div>
             </p>
-</div>
-</div>
+
+
+
+            <p>
+                Total:<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="@pokemon.Total" aria-valuemin="0" aria-valuemax="100" style=" height: 30px">
+                    <div class="progress-bar bg-info " style="width: @(pokemon.Total*100/800)%">@pokemon?.Total</div>
+
+                </div>
+            </p>
+        </div>
+    </div>
+
+
+
+
 }
+
+
+
 
 else
 {
@@ -65,10 +100,12 @@ else
     public int Id { get; set; }
 
     private Pokemon? pokemon;
+    private string imageUrl { get; set; }
 
     protected override void OnInitialized()
     {
         pokemon = DbContext.Pokemons.SingleOrDefault(p => p.Id == Id);
+        imageUrl = ImageGrabber.GetImageUrl(pokemon);
     }
 }
 
