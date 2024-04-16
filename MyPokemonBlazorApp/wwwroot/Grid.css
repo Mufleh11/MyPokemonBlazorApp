@@ -1,0 +1,52 @@
+﻿﻿﻿.quickgrid[theme=pokemon] tbody tr {
+    height: 40px;
+    vertical-align: middle;
+}
+
+.quickgrid[theme=pokemon] .col-title-text {
+    font-weight: bold;
+}
+
+.quickgrid[theme=pokemon] .col-sort-desc .sort-indicator {
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5253 5.49475L10.5206 7.49475L15.0782 7.50541L5.47473 17.0896L6.88752 18.5052L16.5173 8.89479L16.5065 13.5088L18.5065 13.5134L18.5253 5.51345L10.5253 5.49475Z" fill="currentColor" /></svg>');
+}
+
+.quickgrid[theme=pokemon] .col-sort-asc .sort-indicator {
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5253 5.49475L10.5206 7.49475L15.0782 7.50541L5.47473 17.0896L6.88752 18.5052L16.5173 8.89479L16.5065 13.5088L18.5065 13.5134L18.5253 5.51345L10.5253 5.49475Z" fill="currentColor" /></svg>');
+    transform: scaleY(-1);
+}
+
+.paginator {
+    border-top: 0px !important;
+    padding: 0 !important;
+}
+
+
+input[type=search] {
+    width: 20rem;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    color: rgb(17 24 39);
+    background-color: rgb(249 250 251);
+    border: 1px solid rgb(209 213 219);
+    border-radius: 0.5rem;
+    outline-offset: 1px;
+}
+
+    input[type=search]:focus {
+        border-color: rgb(59 130 246);
+        outline-color: rgb(59 130 246);
+    }
+
+.search-box {
+    position: relative;
+}
+
+    .search-box:before {
+        content: ' ';
+        width: 1.25rem;
+        height: 1.25rem;
+        position: absolute;
+        left: .75rem;
+        top: calc(50% - 1.25rem/2);
+        background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='rgb(107 114 128)' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' b-nrli8fdfc6=''%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' b-nrli8fdfc6=''%3E%3C/path%3E%3C/svg%3E");
+    }
